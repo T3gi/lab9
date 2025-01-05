@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            background-color: lightskyblue;
+        }
+        h1 {
+            text-align: center;
+            color: green;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Project Manager</title>
+</head>
+<body>
+<h1>Add Project</h1>
+<form action="/add" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:value="${project.name}" required>
+    <br>
+    <button type="submit">Save</button>
+</form>
+<a href="/">Back to list</a>
+</body>
+</html>

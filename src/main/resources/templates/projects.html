@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            background-color: lightskyblue;
+        }
+        h1 {
+            text-align: center;
+            color: green;
+        }
+        h2 {
+            text-align: center;
+            color: purple;
+        }
+        tr {
+            background-color:rgba(255, 255, 255, 0.3);
+        }
+        .middle {
+            position: absolute;
+            left: 49%;
+            top: 6%;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Lab 9</title>
+</head>
+<body>
+<h2 th:text="${user.name}"></h2>
+<form action="/unlogin" method="post">
+    <button type="submit" class="middle">Exit</button>
+</form>
+<h1>Projects list</h1>
+<a href="/projects">Manage projects</a>
+<a href="/tasks">Manage tasks</a>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Tasks</td>
+        <td>Finished Tasks</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project : ${projects}">
+        <td th:text="${project.id}"></td>
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.tasks}"></td>
+        <td th:text="${project.finished_tasks}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<table>
+    <tr th:each="chat : ${messages}">
+        <td class = "red" th:text="${chat.author}"></td>
+        <td th:text="${chat.text}"></td>
+    </tr>
+</table>
+<form action="/chat" method="post">
+    <input type="text" id="text" name="text" th:value="${message.text}" required>
+    <br>
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
