@@ -77,7 +77,7 @@ public class ProjectController {
         String completed_tasks = project.getTasks() + "; ";
         System.out.println(completed_tasks);
         project = projectService.findByName(project.getName());
-        if (project != null) {
+        if (project != null && project.getTasks().contains(completed_tasks)) {
             String tasks = project.getTasks().replace(completed_tasks, "");
             completed_tasks = project.getFinished_tasks() + completed_tasks;
             project.setTasks(tasks);
